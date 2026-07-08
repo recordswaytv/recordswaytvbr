@@ -70,6 +70,26 @@
 
 .grid-pacotes article{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:12px;min-height:245px}.grid-pacotes article:before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:#e50914}.grid-pacotes h3{font-size:22px;text-transform:uppercase;letter-spacing:.5px}.grid-pacotes .valor{font-size:38px;color:#ff2a2a;font-weight:900;line-height:1}.grid-pacotes ul{list-style:none;padding:0;margin:4px 0 10px;color:#d7d7d7;line-height:1.8}.grid-pacotes li:before{content:"✓";color:#ff2a2a;font-weight:900;margin-right:8px}.grid-pacotes .btn-plano{margin-top:auto;display:inline-flex;justify-content:center;align-items:center;background:#e50914;color:#fff;border-radius:999px;padding:12px 16px;font-weight:900;box-shadow:0 0 22px rgba(229,9,20,.28);transition:.25s}.grid-pacotes .btn-plano:hover{transform:translateY(-2px);background:#ff1723}.destaque-plano .selo{position:absolute;top:14px;right:14px;background:#ff2a2a;color:#fff;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:900;letter-spacing:.5px}
 .poster h3{display:none!important;}
+
+
+/* Seção Por que escolher - adicionada */
+.beneficios-records{
+  padding:70px 6%;
+  background:radial-gradient(circle at top right,rgba(229,9,20,.18),transparent 32%),linear-gradient(180deg,#080808,#120000);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.beneficios-records .titulo-beneficios{text-align:center;margin-bottom:34px;}
+.beneficios-records .titulo-beneficios span{color:#ff3131;text-transform:uppercase;letter-spacing:.14em;font-weight:800;font-size:.8rem;}
+.beneficios-records .titulo-beneficios h2{color:#fff;font-size:clamp(2rem,4vw,3.2rem);margin:10px 0 0;}
+.grid-beneficios-records{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1220px;margin:0 auto;}
+.card-beneficio-records{background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.10);border-radius:20px;padding:24px 20px;box-shadow:0 18px 40px rgba(0,0,0,.35);transition:.25s ease;min-height:220px;}
+.card-beneficio-records:hover{transform:translateY(-6px);border-color:rgba(255,49,49,.65);box-shadow:0 20px 55px rgba(229,9,20,.22);}
+.card-beneficio-records .icone{font-size:2.1rem;display:block;margin-bottom:14px;}
+.card-beneficio-records h3{color:#fff;margin:0 0 10px;font-size:1.06rem;}
+.card-beneficio-records p{color:#cfcfcf;line-height:1.55;font-size:.95rem;margin:0;}
+@media(max-width:1050px){.grid-beneficios-records{grid-template-columns:repeat(2,minmax(0,1fr));}.card-beneficio-records{min-height:190px;}}
+@media(max-width:620px){.beneficios-records{padding:52px 5%;}.grid-beneficios-records{grid-template-columns:1fr;}.card-beneficio-records{min-height:auto;}}
+
 </style>
 </head>
 <body>
@@ -91,7 +111,7 @@
       <div class="hero-conteudo">
         <span class="tag">Filmes • Séries • Canais • Esportes</span>
         <h1>Tudo em um só lugar.</h1>
-        <p>Planos acessíveis, visual moderno e contratação rápida pelo WhatsApp.</p>
+        <p>Planos acessíveis e contratação rápida pelo WhatsApp.</p>
         <div class="acoes">
           <a class="btn" href="https://wa.me/556234133632" target="_blank">Assine Agora</a>
           <a class="btn secundario" href="#lancamentos">Ver Lançamentos</a>
@@ -180,6 +200,56 @@
     </section>
 
     
+
+    <section id="beneficios-records" class="secao beneficios-records">
+      <div class="titulo-beneficios">
+        <span>Vantagens</span>
+        <h2>Por que escolher a RECORDS WAY?</h2>
+      </div>
+      <div class="grid-beneficios-records">
+        <article class="card-beneficio-records">
+          <span class="icone">🎬</span>
+          <h3>Conteúdo completo</h3>
+          <p>Assista a centenas de canais ao vivo, filmes, séries, esportes, programação infantil, documentários e muito mais em uma única plataforma.</p>
+        </article>
+        <article class="card-beneficio-records">
+          <span class="icone">📺</span>
+          <h3>Até 2 ou 3 telas simultâneas</h3>
+          <p>Compartilhe sua assinatura com a família e assista em até 2 ou 3 dispositivos ao mesmo tempo, conforme o plano escolhido.</p>
+        </article>
+        <article class="card-beneficio-records">
+          <span class="icone">⚡</span>
+          <h3>Ativação rápida</h3>
+          <p>Após a confirmação do pagamento, seu acesso é liberado rapidamente para que você comece a assistir sem complicação.</p>
+        </article>
+        <article class="card-beneficio-records">
+          <span class="icone">🎁</span>
+          <h3>Teste gratuito por 4 horas</h3>
+          <p>Experimente a qualidade da RECORDS WAY sem compromisso. Solicite seu teste gratuito e conheça todo o catálogo antes de assinar.</p>
+        </article>
+        <article class="card-beneficio-records">
+          <span class="icone">💰</span>
+          <h3>Excelente custo-benefício</h3>
+          <p>Tenha acesso a uma ampla variedade de conteúdos por um valor acessível, com planos que se adaptam às suas necessidades.</p>
+        </article>
+        <article class="card-beneficio-records">
+          <span class="icone">📱</span>
+          <h3>Compatível com diversos dispositivos</h3>
+          <p>Assista na Smart TV, TV Box, celular, tablet, computador ou outros dispositivos compatíveis, onde e quando quiser.</p>
+        </article>
+        <article class="card-beneficio-records">
+          <span class="icone">🛠️</span>
+          <h3>Atendimento dedicado</h3>
+          <p>Conte com suporte para tirar dúvidas e receber auxílio sempre que precisar.</p>
+        </article>
+        <article class="card-beneficio-records">
+          <span class="icone">🔄</span>
+          <h3>Catálogo em constante atualização</h3>
+          <p>Novos filmes, séries e conteúdos são adicionados regularmente para oferecer ainda mais opções de entretenimento.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="pacotes" class="secao pacotes">
       <div class="titulo"><span>Planos</span><h2>Pacotes completos</h2></div>
       <div class="grid-pacotes">
