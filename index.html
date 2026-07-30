@@ -226,19 +226,7 @@ body{background:radial-gradient(circle at 85% 8%,rgba(229,9,20,.10),transparent 
 }
 </style>
 
-<style id="records-chatbot-style">
-.records-chatbot-launcher{position:fixed;right:20px;bottom:20px;z-index:10020;width:62px;height:62px;border:1px solid rgba(255,255,255,.18);border-radius:50%;background:linear-gradient(145deg,#e50914,#790008);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 16px 42px rgba(0,0,0,.48),0 0 28px rgba(229,9,20,.35);transition:.25s;font-size:27px}.records-chatbot-launcher:hover{transform:translateY(-3px) scale(1.04)}.records-chatbot-launcher .close-icon{display:none;font-size:22px}.records-chatbot-launcher.open .chat-icon{display:none}.records-chatbot-launcher.open .close-icon{display:block}
-.records-chatbot{position:fixed;right:20px;bottom:168px;z-index:10019;width:min(390px,calc(100vw - 28px));height:min(600px,calc(100vh - 130px));background:rgba(13,13,16,.98);border:1px solid rgba(255,255,255,.13);border-radius:24px;overflow:hidden;box-shadow:0 26px 70px rgba(0,0,0,.58),0 0 34px rgba(229,9,20,.16);display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(18px) scale(.97);transform-origin:bottom right;transition:.25s}.records-chatbot.open{opacity:1;visibility:visible;transform:none}
-.records-chatbot-header{padding:17px 18px;background:linear-gradient(135deg,#b5000b,#520006);display:flex;align-items:center;gap:12px}.records-bot-avatar{width:43px;height:43px;border-radius:50%;background:#0f0f12;border:1px solid rgba(255,255,255,.22);display:grid;place-items:center;font-size:23px;box-shadow:inset 0 0 14px rgba(229,9,20,.3)}.records-chatbot-header strong{display:block;font-size:15px}.records-chatbot-header small{display:flex;align-items:center;gap:6px;margin-top:3px;color:#f3d9db}.records-chatbot-header small:before{content:"";width:8px;height:8px;border-radius:50%;background:#38dc78;box-shadow:0 0 9px #38dc78}
-.records-chatbot-messages{flex:1;overflow:auto;padding:18px 14px 12px;scroll-behavior:smooth}.records-msg{max-width:86%;padding:11px 13px;border-radius:16px;margin:0 0 10px;font-size:13.5px;line-height:1.45;white-space:pre-line}.records-msg.bot{background:#232329;color:#f7f7f7;border-bottom-left-radius:5px}.records-msg.user{margin-left:auto;background:linear-gradient(135deg,#d80713,#850009);color:#fff;border-bottom-right-radius:5px}.records-msg a{color:#fff;text-decoration:underline;font-weight:800}
-.records-quick-replies{padding:0 13px 10px;display:flex;gap:7px;flex-wrap:wrap;max-height:105px;overflow:auto}.records-quick-replies button{border:1px solid rgba(229,9,20,.5);background:#1b1b20;color:#fff;border-radius:999px;padding:8px 11px;font-size:12px;cursor:pointer;transition:.2s}.records-quick-replies button:hover{background:#a9000a;border-color:#e50914}
-.records-chatbot-input{padding:11px;border-top:1px solid rgba(255,255,255,.1);display:flex;gap:8px;background:#111115}.records-chatbot-input input{flex:1;min-width:0;border:1px solid rgba(255,255,255,.14);background:#1b1b20;color:#fff;border-radius:14px;padding:12px 13px;outline:none}.records-chatbot-input input:focus{border-color:#e50914;box-shadow:0 0 0 3px rgba(229,9,20,.12)}.records-chatbot-input button{width:45px;border:0;border-radius:14px;background:#d40712;color:#fff;font-size:19px;cursor:pointer}.records-chatbot-note{text-align:center;padding:0 10px 9px;color:#85858c;font-size:10.5px;background:#111115}
 
-.records-chatbot-launcher::after{content:"1";position:absolute;right:-2px;top:-2px;width:21px;height:21px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#071b0d;font:900 11px Arial;border:2px solid #111;box-shadow:0 4px 12px rgba(0,0,0,.35)}
-.records-chatbot-launcher.open::after,.records-chatbot-launcher.seen::after{display:none}
-.records-chatbot-greeting{position:fixed;right:20px;bottom:100px;z-index:10018;max-width:280px;padding:12px 15px;border-radius:16px 16px 4px 16px;background:rgba(20,20,24,.97);border:1px solid rgba(255,255,255,.13);box-shadow:0 16px 42px rgba(0,0,0,.45);color:#fff;font-size:13px;line-height:1.4;opacity:0;visibility:hidden;transform:translateY(10px);transition:.25s}.records-chatbot-greeting.show{opacity:1;visibility:visible;transform:none}.records-chatbot-greeting strong{color:#ff4b55}
-@media(max-width:600px){.records-chatbot-launcher{right:12px;bottom:12px;width:57px;height:57px}.records-chatbot{right:8px;bottom:148px;width:calc(100vw - 16px);height:min(650px,calc(100vh - 90px));border-radius:19px}.records-chatbot-messages{padding-top:14px}.records-quick-replies{max-height:120px}.whatsapp-float{right:12px!important;left:auto!important;bottom:80px!important}}
-</style>
 
 </head>
 <body>
@@ -677,132 +665,23 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
-<div class="records-chatbot-greeting" id="recordsChatGreeting"><strong>Olá! 👋</strong><br>Posso ajudar você a escolher o melhor plano?</div>
-<button class="records-chatbot-launcher" id="recordsChatbotLauncher" aria-label="Abrir atendimento virtual" aria-expanded="false"><span class="chat-icon">🤖</span><span class="close-icon">✕</span></button>
-<section class="records-chatbot" id="recordsChatbot" aria-label="Atendimento virtual RECORDS WAY" aria-hidden="true">
-  <div class="records-chatbot-header">
-    <div class="records-bot-avatar">🤖</div>
-    <div><strong>Assistente RECORDS WAY</strong><small>Atendimento automático</small></div>
-  </div>
-  <div class="records-chatbot-messages" id="recordsChatMessages" aria-live="polite"></div>
-  <div class="records-quick-replies" id="recordsQuickReplies"></div>
-  <form class="records-chatbot-input" id="recordsChatForm">
-    <input id="recordsChatInput" type="text" autocomplete="off" placeholder="Digite sua pergunta..." aria-label="Digite sua pergunta"/>
-    <button type="submit" aria-label="Enviar pergunta">➤</button>
-  </form>
-  <div class="records-chatbot-note">Respostas automáticas. Para atendimento humano, fale pelo WhatsApp.</div>
-</section>
-
-<a class="whatsapp-float" href="https://wa.me/556234133632" target="_blank" aria-label="Falar no WhatsApp"><b>✆</b><span>Fale no WhatsApp</span></a>
-<script id="premium-interactions">
-document.addEventListener('DOMContentLoaded',()=>{
-  const header=document.querySelector('.topo');
-  const updateHeader=()=>header&&header.classList.toggle('scrolled',window.scrollY>35);
-  updateHeader(); window.addEventListener('scroll',updateHeader,{passive:true});
-  const targets=document.querySelectorAll('main > .secao, .cta-final');
-  targets.forEach(el=>el.classList.add('reveal'));
-  if('IntersectionObserver' in window){
-    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -35px'});
-    targets.forEach(el=>observer.observe(el));
-  }else targets.forEach(el=>el.classList.add('visible'));
-});
-</script>
 
 
-<script id="records-chatbot-script">
-document.addEventListener('DOMContentLoaded',()=>{
-  const launcher=document.getElementById('recordsChatbotLauncher');
-  const chat=document.getElementById('recordsChatbot');
-  const messages=document.getElementById('recordsChatMessages');
-  const quick=document.getElementById('recordsQuickReplies');
-  const form=document.getElementById('recordsChatForm');
-  const input=document.getElementById('recordsChatInput');
-  const whatsapp='https://wa.me/556234133632';
-  const greeting=document.getElementById('recordsChatGreeting');
 
-  const replies=[
-    {label:'Ver planos',query:'planos'},
-    {label:'Teste gratuito',query:'teste'},
-    {label:'Quantas telas?',query:'telas'},
-    {label:'Dispositivos compatíveis',query:'compatibilidade'},
-    {label:'Como funciona a ativação?',query:'ativação'},
-    {label:'Falar no WhatsApp',query:'whatsapp'}
-  ];
-
-  function addMessage(text,type='bot',html=false){
-    const el=document.createElement('div');
-    el.className='records-msg '+type;
-    if(html) el.innerHTML=text; else el.textContent=text;
-    messages.appendChild(el);
-    messages.scrollTop=messages.scrollHeight;
-  }
-
-  function showQuickReplies(){
-    quick.innerHTML='';
-    replies.forEach(item=>{
-      const btn=document.createElement('button');
-      btn.type='button'; btn.textContent=item.label;
-      btn.addEventListener('click',()=>handleQuestion(item.query,item.label));
-      quick.appendChild(btn);
-    });
-  }
-
-  function normalize(value){
-    return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();
-  }
-
-  function getAnswer(raw){
-    const q=normalize(raw);
-    if(/(oi|ola|bom dia|boa tarde|boa noite|e ai)/.test(q)) return 'Olá! Sou o assistente virtual da RECORDS WAY. Posso informar planos, teste gratuito, quantidade de telas, compatibilidade e ativação.';
-    if(/(plano|preco|valor|mensal|bimestral|trimestral|semestral|anual|quanto custa)/.test(q)) return 'Nossos planos são:\n• Mensal: R$ 34,99 — 2 telas\n• Bimestral: R$ 54,99 — 2 telas\n• Trimestral: R$ 79,99 — 2 telas\n• Platinum Plus: R$ 99,99 — 3 telas\n• Semestral: R$ 159,99 — 3 telas\n• Anual: R$ 309,99 — 3 telas\n\nPara contratar, toque em “Falar no WhatsApp”.';
-    if(/(teste|experimentar|gratis|gratuito|demonstracao)/.test(q)) return 'Disponibilizamos teste gratuito de até 4 horas para você verificar o funcionamento e a compatibilidade no seu aparelho. Solicite pelo WhatsApp.';
-    if(/(tela|dispositivo ao mesmo tempo|simultanea|simultaneo)/.test(q)) return 'Os planos Mensal, Bimestral e Trimestral incluem 2 telas simultâneas. Os planos Platinum Plus, Semestral e Anual incluem 3 telas simultâneas.';
-    if(/(compativ|aparelho|smart tv|tv box|celular|tablet|computador|notebook|android|iphone)/.test(q)) return 'O serviço é compatível com Smart TV, TV Box, celular, tablet e computador. A disponibilidade pode variar conforme o sistema do aparelho; nossa equipe orienta a instalação.';
-    if(/(ativacao|ativar|liberacao|liberar|pagamento|demora)/.test(q)) return 'Após a confirmação do pagamento, o acesso é liberado rapidamente. Você recebe as orientações necessárias pelo WhatsApp.';
-    if(/(conteudo|canal|filme|serie|esporte|infantil|documentario)/.test(q)) return 'O catálogo reúne canais ao vivo, filmes, séries, esportes, programação infantil, documentários e outros conteúdos. A disponibilidade pode receber atualizações.';
-    if(/(anuncio|propaganda)/.test(q)) return 'A experiência foi pensada para oferecer acesso prático ao conteúdo, sem anúncios inseridos pela RECORDS WAY.';
-    if(/(suporte|ajuda|problema|travando|nao funciona|erro)/.test(q)) return 'Para suporte técnico, informe no WhatsApp o modelo do aparelho, o aplicativo utilizado e uma descrição do problema. A equipe fará a orientação.';
-    if(/(whatsapp|atendente|humano|contratar|assinar|quero assinar|comprar)/.test(q)) return '<a href="'+whatsapp+'" target="_blank" rel="noopener">Clique aqui para falar com um atendente no WhatsApp.</a>';
-    return 'Ainda não tenho uma resposta pronta para essa pergunta. Posso ajudar com planos, preços, teste gratuito, telas, dispositivos, ativação e suporte. Você também pode falar diretamente com um atendente pelo WhatsApp.';
-  }
-
-  function handleQuestion(query,displayText){
-    addMessage(displayText||query,'user');
-    quick.innerHTML='';
-    setTimeout(()=>{
-      const answer=getAnswer(query);
-      addMessage(answer,'bot',answer.includes('<a '));
-      showQuickReplies();
-    },420);
-  }
-
-  function setOpen(open){
-    launcher.classList.toggle('open',open);
-    chat.classList.toggle('open',open);
-    launcher.setAttribute('aria-expanded',String(open));
-    chat.setAttribute('aria-hidden',String(!open));
-    if(open){
-      if(!messages.children.length){
-        addMessage('Olá! 👋 Sou o assistente virtual da RECORDS WAY. Como posso ajudar?');
-        showQuickReplies();
-      }
-      setTimeout(()=>input.focus(),250);
-    }
-  }
-
-  launcher.addEventListener('click',()=>{launcher.classList.add('seen'); greeting&&greeting.classList.remove('show'); setOpen(!chat.classList.contains('open'));});
-  setTimeout(()=>{if(greeting&&!chat.classList.contains('open')) greeting.classList.add('show');},2200);
-  setTimeout(()=>{if(greeting) greeting.classList.remove('show');},9000);
-  form.addEventListener('submit',event=>{
-    event.preventDefault();
-    const value=input.value.trim();
-    if(!value) return;
-    input.value='';
-    handleQuestion(value);
-  });
-  document.addEventListener('keydown',event=>{if(event.key==='Escape') setOpen(false)});
-});
-</script>
-
+<section style="max-width:1100px;margin:60px auto;padding:30px;background:linear-gradient(135deg,#120000,#2a0000);border:1px solid #ff3030;border-radius:22px;box-shadow:0 0 30px rgba(255,0,0,.35);color:#fff">
+<h2 style="text-align:center;color:#ff4d4d">🕒 Atendimento RECORDS WAY</h2>
+<p style="text-align:center;color:#ddd">Estamos prontos para atender você pelo WhatsApp.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+<div style="background:rgba(255,255,255,.06);padding:20px;border-radius:18px">
+<h3>Horário de Atendimento</h3>
+<p><b>Segunda a Sexta</b><br>09:00 às 22:00</p>
+<p><b>Sábado e Domingo</b><br>09:00 às 18:00</p>
+</div>
+<div style="background:rgba(255,255,255,.06);padding:20px;border-radius:18px">
+<h3>📵 Importante</h3>
+<p><b>Não atendemos ligações.</b></p>
+<p>Todo o atendimento é realizado exclusivamente pelo WhatsApp.</p>
+<a href="https://wa.me/" style="display:inline-block;background:#25D366;color:#fff;padding:14px 22px;border-radius:30px;text-decoration:none;font-weight:bold">💬 Falar no WhatsApp</a>
+</div></div></section>
 </body>
 </html>
