@@ -496,13 +496,14 @@ function iniciarCarrosselAutomatico(seletor, intervalo, passo){
 iniciarCarrosselAutomatico('[data-carousel="destaques"]',2800,240);
 iniciarCarrosselAutomatico('[data-carousel="lancamentos"]',3500,230);
 </script>
-<audio id="bgMusic" loop="" preload="auto">
+<audio id="bgMusic" preload="auto">
 <source src="Assine e Divirta-se.mp3" type="audio/mpeg"/>
 </audio>
 <div aria-label="Controles da música" class="audio-controls">
 <button aria-label="Ativar música" class="music-toggle" id="musicToggle" title="Ativar música" type="button">
 <span aria-hidden="true" class="music-icon">♪</span>
 <span class="music-label">Ativar música</span>
+<span class="track-title" id="trackTitle" aria-live="polite"></span>
 </button>
 <button aria-label="Ajustar volume" class="volume-toggle" id="volumeToggle" title="Ajustar volume" type="button">🔊</button>
 <div aria-hidden="true" class="volume-panel" id="volumePanel">
@@ -513,7 +514,7 @@ iniciarCarrosselAutomatico('[data-carousel="lancamentos"]',3500,230);
 <style>
 .audio-controls{position:fixed;left:18px;right:auto;bottom:18px;z-index:9999;display:flex;align-items:center;gap:8px}
 .music-toggle,.volume-toggle{border:1px solid rgba(255,255,255,.22);background:rgba(18,18,20,.92);color:#fff;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.38);backdrop-filter:blur(10px);transition:transform .2s ease,background .2s ease,border-color .2s ease}
-.music-toggle{display:flex;align-items:center;gap:9px;border-radius:999px;padding:10px 15px;font:700 14px/1 Arial,sans-serif}
+.music-toggle{display:flex;align-items:center;gap:9px;border-radius:999px;padding:10px 15px;font:700 14px/1 Arial,sans-serif}.track-title{display:none;font:600 11px/1.2 Arial,sans-serif;color:#ffd4d4;max-width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.music-toggle.playing .track-title{display:inline}
 .volume-toggle{width:47px;height:47px;border-radius:50%;font-size:19px}
 .music-toggle:hover,.volume-toggle:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.38)}
 .music-toggle.playing,.volume-toggle.active{background:linear-gradient(135deg,#9d0000,#e00000)}
@@ -536,16 +537,37 @@ document.addEventListener('DOMContentLoaded',()=>{
   const volumePanel=document.getElementById('volumePanel');
   const volumeRange=document.getElementById('volumeRange');
   const volumeValue=document.getElementById('volumeValue');
+  const trackTitle=document.getElementById('trackTitle');
+  const playlist=[
+    {src:'Assine e Divirta-se.mp3',title:'É Só Chamar!',artist:'RECORDS WAY'},
+    {src:'Eu Nao Vou Sair.mp3',title:'Eu Não Vou Sair',artist:'RECORDS WAY'}
+  ];
+  let currentTrack=0;
   let targetVolume=.35;
   let lastAudibleVolume=.35;
   let fadeTimer=null;
 
+  function updateTrackInfo(){
+    const track=playlist[currentTrack];
+    trackTitle.textContent=track.artist+' — '+track.title;
+    toggle.title=track.artist+' — '+track.title;
+  }
+
+  function loadTrack(index){
+    currentTrack=(index+playlist.length)%playlist.length;
+    const track=playlist[currentTrack];
+    audio.src=track.src;
+    audio.load();
+    updateTrackInfo();
+  }
+
   function updateButton(isPlaying){
     toggle.classList.toggle('playing',isPlaying);
-    label.textContent=isPlaying?'Pausar música':'Ativar música';
+    label.textContent=isPlaying?'Pausar':'Ativar música';
     icon.textContent=isPlaying?'❚❚':'♪';
-    toggle.setAttribute('aria-label',label.textContent);
-    toggle.title=label.textContent;
+    toggle.setAttribute('aria-label',isPlaying?'Pausar música':'Ativar música');
+    if(!isPlaying) toggle.title='Ativar música';
+    else updateTrackInfo();
   }
 
 
@@ -573,6 +595,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     fadeTimer=null;
     audio.volume=targetVolume;
     updateVolumeUI();
+  loadTrack(0);
   });
 
   volumeToggle.addEventListener('dblclick',(event)=>{
@@ -631,9 +654,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(audio.paused) startMusic(); else pauseMusic();
   });
 
-  // Mantém a reprodução contínua mesmo em navegadores que não respeitem o atributo loop.
+  // Ao terminar uma faixa, inicia automaticamente a próxima música da playlist.
   audio.addEventListener('ended',()=>{
-    audio.currentTime=0;
+    loadTrack(currentTrack+1);
     startMusic();
   });
 
