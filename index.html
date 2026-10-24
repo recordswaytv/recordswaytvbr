@@ -170,6 +170,15 @@
   .destaque-card img{width:170px!important;height:auto!important;aspect-ratio:auto!important;}
 }
 
+
+/* Vídeo institucional RECORDS WAY */
+.rw-video-section{padding:64px 6%;background:linear-gradient(180deg,#080808,#170406 55%,#080808);text-align:center}
+.rw-video-section h2{font-size:clamp(26px,4vw,42px);margin:8px 0 12px;color:#fff}
+.rw-video-section p{color:#c9c9c9;margin:0 auto 28px;max-width:620px;line-height:1.5}
+.rw-video-label{color:#ff3636;font-weight:800;letter-spacing:2px;font-size:12px}
+.rw-video-wrap{max-width:370px;margin:auto;border:1px solid rgba(255,65,65,.35);border-radius:20px;overflow:hidden;background:#000;box-shadow:0 15px 55px rgba(0,0,0,.55)}
+.rw-video-wrap video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;background:#000}
+@media(max-width:600px){.rw-video-section{padding:44px 5%}.rw-video-wrap{max-width:330px}}
 </style>
 <style id="premium-upgrade">
 :root{--rw-red:#e50914;--rw-red2:#ff2532;--rw-bg:#050505;--rw-card:#111214;--rw-border:rgba(255,255,255,.10)}
@@ -253,6 +262,13 @@ body{background:radial-gradient(circle at 85% 8%,rgba(229,9,20,.10),transparent 
 <a class="btn secundario" href="#filmes">Ver Filmes</a>
 </div>
 </div>
+</section>
+
+<section class="rw-video-section" id="video-records" aria-label="Vídeo de apresentação da RECORDS WAY">
+ <span class="rw-video-label">CONHEÇA A RECORDS WAY</span>
+ <h2>Entretenimento na sua tela</h2>
+ <p>Assista ao nosso vídeo de apresentação. ASSINOU, ATIVOU, ASSISTIU!</p>
+ <div class="rw-video-wrap"><video controls playsinline preload="metadata" aria-label="Vídeo promocional da RECORDS WAY"><source src="videos/records-way-apresentacao.mp4" type="video/mp4">Seu navegador não suporta a reprodução deste vídeo.</video></div>
 </section>
 <section class="secao rw-vitrine" id="filmes" aria-label="DESTAQUE DE FILMES">
  <div class="titulo-linha"><div><span>Escolhas para você</span><h2>DESTAQUE DE FILMES</h2></div><div class="controles"><button type="button" data-prev="filmes" aria-label="Voltar capas de DESTAQUE DE FILMES">‹</button><button type="button" data-next="filmes" aria-label="Avançar capas de DESTAQUE DE FILMES">›</button></div></div>
