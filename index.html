@@ -268,7 +268,7 @@ body{background:radial-gradient(circle at 85% 8%,rgba(229,9,20,.10),transparent 
  <span class="rw-video-label">CONHEÇA A RECORDS WAY</span>
  <h2>Entretenimento na sua tela</h2>
  <p>Assista ao nosso vídeo de apresentação. ASSINOU, ATIVOU, ASSISTIU!</p>
- <div class="rw-video-wrap"><video controls autoplay muted loop playsinline preload="auto" aria-label="Vídeo promocional da RECORDS WAY"><source src="videos/records-way-apresentacao.mp4" type="video/mp4">Seu navegador não suporta a reprodução deste vídeo.</video></div>
+ <div class="rw-video-wrap"><video id="rwPromoVideo" controls autoplay loop playsinline webkit-playsinline preload="auto" aria-label="Vídeo promocional da RECORDS WAY"><source src="videos/records-way-apresentacao.mp4" type="video/mp4">Seu navegador não suporta a reprodução deste vídeo.</video><button type="button" id="rwPromoPlay" style="display:none;margin:12px auto;padding:12px 22px;background:#d71920;color:white;border:0;border-radius:12px;cursor:pointer;font-weight:bold">▶ Reproduzir vídeo</button></div>
 </section>
 <section class="secao rw-vitrine" id="filmes" aria-label="DESTAQUE DE FILMES">
  <div class="titulo-linha"><div><span>Escolhas para você</span><h2>DESTAQUE DE FILMES</h2></div><div class="controles"><button type="button" data-prev="filmes" aria-label="Voltar capas de DESTAQUE DE FILMES">‹</button><button type="button" data-next="filmes" aria-label="Avançar capas de DESTAQUE DE FILMES">›</button></div></div>
@@ -709,6 +709,37 @@ document.addEventListener('DOMContentLoaded',()=>{
     trilho.addEventListener('pointerdown', () => { pausa = true; clearTimeout(espera); espera = setTimeout(() => { pausa = false; }, 4000); });
     setTimeout(() => { setInterval(mover, intervalo); }, indice * 1100);
   });
+})();
+</script>
+<script id="rw-video-autoplay-fix">
+(function(){
+ const video=document.getElementById('rwPromoVideo');
+ const button=document.getElementById('rwPromoPlay');
+ if(!video||!button)return;
+ video.autoplay=true;
+ video.muted=false;
+ video.defaultMuted=false;
+ video.removeAttribute('muted');
+ video.volume=1;
+ video.playsInline=true;
+ button.textContent='▶ ASSISTIR COM SOM';
+ let started=false;
+ function attempt(){
+   if(started)return;
+   started=true;
+   video.muted=false;
+   video.volume=1;
+   const p=video.play();
+   if(p&&typeof p.then==='function')p.then(()=>{button.style.display='none';}).catch(()=>{button.style.display='block';});
+ }
+ button.addEventListener('click',function(){
+   video.muted=false;
+   video.volume=1;
+   video.play().then(()=>{button.style.display='none';}).catch(()=>{button.style.display='block';});
+ });
+ video.addEventListener('playing',()=>{button.style.display='none';});
+ video.addEventListener('error',()=>{button.style.display='block';button.textContent='Vídeo indisponível — verificar arquivo';});
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attempt,{once:true});else attempt();
 })();
 </script>
 </body>
