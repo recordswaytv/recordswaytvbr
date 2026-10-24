@@ -268,7 +268,7 @@ body{background:radial-gradient(circle at 85% 8%,rgba(229,9,20,.10),transparent 
  <span class="rw-video-label">CONHEÇA A RECORDS WAY</span>
  <h2>Entretenimento na sua tela</h2>
  <p>Assista ao nosso vídeo de apresentação. ASSINOU, ATIVOU, ASSISTIU!</p>
- <div class="rw-video-wrap"><video controls playsinline preload="metadata" aria-label="Vídeo promocional da RECORDS WAY"><source src="videos/records-way-apresentacao.mp4" type="video/mp4">Seu navegador não suporta a reprodução deste vídeo.</video></div>
+ <div class="rw-video-wrap"><video controls autoplay muted loop playsinline preload="auto" aria-label="Vídeo promocional da RECORDS WAY"><source src="videos/records-way-apresentacao.mp4" type="video/mp4">Seu navegador não suporta a reprodução deste vídeo.</video></div>
 </section>
 <section class="secao rw-vitrine" id="filmes" aria-label="DESTAQUE DE FILMES">
  <div class="titulo-linha"><div><span>Escolhas para você</span><h2>DESTAQUE DE FILMES</h2></div><div class="controles"><button type="button" data-prev="filmes" aria-label="Voltar capas de DESTAQUE DE FILMES">‹</button><button type="button" data-next="filmes" aria-label="Avançar capas de DESTAQUE DE FILMES">›</button></div></div>
@@ -645,18 +645,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     startMusic();
   });
 
-  // Tenta iniciar ao abrir. Se o navegador bloquear, inicia na primeira interação fora do botão.
-  startMusic();
-  let interactionHandled=false;
-  const firstInteraction=(event)=>{
-    if(interactionHandled || toggle.contains(event.target)) return;
-    interactionHandled=true;
-    if(audio.paused) startMusic();
-    document.removeEventListener('pointerdown',firstInteraction);
-    document.removeEventListener('keydown',firstInteraction);
-  };
-  document.addEventListener('pointerdown',firstInteraction);
-  document.addEventListener('keydown',firstInteraction);
+  // Música reproduz somente por ação direta no botão do player.
+  updateButton(false);
 });
 </script>
 <section style="max-width:1100px;margin:60px auto;padding:30px;background:linear-gradient(135deg,#120000,#2a0000);border:1px solid #ff3030;border-radius:22px;box-shadow:0 0 30px rgba(255,0,0,.35);color:#fff">
