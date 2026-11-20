@@ -1,0 +1,10 @@
+RECORDS WAY - INSTRUCOES PARA PUBLICAR NO GITHUB
+
+1. EXTRAIA este arquivo ZIP no seu computador.
+2. Abra o repositorio no GitHub e envie TODOS os arquivos extraidos.
+3. Envie o index.html E A PASTA assets COMPLETA, mantendo os nomes e a estrutura.
+4. A pasta assets deve estar no mesmo nivel do index.html.
+5. Confirme que os arquivos aparecem no repositorio em assets/capa_...
+6. Aguarde o GitHub Pages publicar; atualize o navegador com Ctrl+Shift+R.
+ATENCAO: se enviar apenas index.html, nenhuma capa vai aparecer.
+Validacao local: 74 referencias de imagens; 61 imagens distintas em assets; 0 referencias ausentes.
